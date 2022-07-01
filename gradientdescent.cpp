@@ -95,10 +95,10 @@ void find_optimal_theta_parameters() {
             temp[j] = theta[j] - learning_rate * result;
         }
         theta = temp;
+        iters++;
         if (iters == 100000 || fabs(J() - old_cost) <= epsilon) {
             is_converged = true;
         }
-        iters++;
     }
 }
 
