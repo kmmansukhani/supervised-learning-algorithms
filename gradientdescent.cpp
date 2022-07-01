@@ -67,7 +67,7 @@ double h(vector<double> &x){
     }
     return result;
 }
-// Cost function
+// Cost/error function
 double J(){ 
     double result = 0;
     for (int i = 0; i < X.size(); ++i){
