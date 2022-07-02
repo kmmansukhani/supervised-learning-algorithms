@@ -107,13 +107,24 @@ void find_optimal_theta_parameters() {
     }
 }
 void print_equation() {
-    cout << ":::::::::::::::::::::PREDICTED DECISION BOUNDARY EQUATION::::::::::::::::::::::::" << endl; 
-    cout << "Y = " << theta[1] << "x + " << theta[0] << endl;
+    cout << "Predicted decision boundary equation: Y = ";
+    for (int i = 0; i < theta.size(); ++i) {
+        if (i == 0) {
+            cout << theta[i] << " + ";
+        }else if (i == theta.size() - 1){
+            cout << theta[i] << "x" << i << endl;;       
+        }else{
+            cout << theta[i] << "x" << i << " + ";
+        }
+    }
 }
-
+void print_probability() {
+    cout << "Probability of predictions accurate: " << exp(likely(X.size())) << endl; 
+}
 int main() {
     get_training_data();
     find_optimal_theta_parameters();
     print_equation();
+    print_probability();
     return 0;   
 }

@@ -103,13 +103,43 @@ void find_optimal_theta_parameters() {
 }
 
 void print_equation() {
-    cout << ":::::::::::::::::::::PREDICTED EQUATION::::::::::::::::::::::::" << endl; 
-    cout << "Y = " << theta[1] << "x + " << theta[0] << endl;
+    cout << "Predicted equation: Y = ";
+    for (int i = 0; i < theta.size(); ++i) {
+        if (i == 0) {
+            cout << theta[i] << "+ ";
+        }else if (i == theta.size() - 1){
+            cout << theta[i] << "x" << i << endl;;       
+        }else{
+            cout << theta[i] << "x" << i << "+ ";
+        }
+    }
+}
+void print_error() {
+    cout << "Total error: " << J() << endl; 
+}
+void predict() { // Asks for inputs and displays coressponding prediction 
+    string x_values;
+    while (true) {
+        cout << "Enter your x-values that you want to predict for (comma is delimiter, Q to quit): ";
+        cin >> x_values;
+        if (x_values == "Q") {
+            break;
+        }
+
+        vector<string> x_values_string_vec = split_string(x_values, ',');
+        vector<double> x_values_vec = {1};
+        for (int i = 0; i < x_values_string_vec.size(); ++i) {
+            x_values_vec.push_back(stod(x_values_string_vec[i]));
+        }
+        cout << "Model's prediction: " << h(x_values_vec) << endl;
+    }
 }
 
 int main() {
     get_training_data();
     find_optimal_theta_parameters();
     print_equation();
+    print_error();
+    predict();
     return 0;
 }
