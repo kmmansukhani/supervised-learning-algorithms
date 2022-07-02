@@ -18,7 +18,7 @@ double dot(vector<double>& v1, vector<double>& v2) { // Dot product
     return inner_product(v1.begin(), v1.end(), v2.begin(), 0); 
 }
 
-double likely(int num_of_training_ex) { //log likelyhood function
+double likely(int num_of_training_ex) { // Log likelyhood function
     double sum = 0;
     for (int i = 0; i < num_of_training_ex; ++i) {
         double h = g(dot(theta, X[i]));
@@ -118,7 +118,7 @@ void print_equation() {
         }
     }
 }
-void print_probability() {
+void print_probability() { 
     cout << "Probability of predictions accurate: " << exp(likely(X.size())) << endl; 
 }
 void predict() { // Asks for inputs and displays coressponding prediction 
