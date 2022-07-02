@@ -121,10 +121,35 @@ void print_equation() {
 void print_probability() {
     cout << "Probability of predictions accurate: " << exp(likely(X.size())) << endl; 
 }
+void predict() { // Asks for inputs and displays coressponding prediction 
+    string x_values;
+    while (true) {
+        cout << "Enter your x-values that you want to predict for (comma is delimiter, Q to quit): ";
+        cin >> x_values;
+        if (x_values == "Q") {
+            break;
+        }
+
+        vector<string> x_values_string_vec = split_string(x_values, ',');
+        vector<double> x_values_vec = {1};
+        for (int i = 0; i < x_values_string_vec.size(); ++i) {
+            x_values_vec.push_back(stod(x_values_string_vec[i]));
+        }
+        double h = g(dot(theta, x_values_vec));
+        cout << "Model's prediction: "; 
+        if (h >= 0.5) {
+            cout << 1 << endl;
+        }else{
+            cout << 0 << endl;
+        }
+    }
+}
+
 int main() {
     get_training_data();
     find_optimal_theta_parameters();
     print_equation();
     print_probability();
+    predict();
     return 0;   
 }
