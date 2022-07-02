@@ -137,8 +137,8 @@ void predict() { // Asks for inputs and displays coressponding prediction
         }
         double h = g(dot(theta, x_values_vec));
         cout << "Model's prediction: "; 
-        if (h >= 0.5) {
-            cout << 1 << endl;
+        if (h >= 0.5) { // if probablity >= 0.5
+            cout << 1 << endl; 
         }else{
             cout << 0 << endl;
         }
